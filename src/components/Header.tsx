@@ -1,0 +1,34 @@
+import { Navigation } from "@/components";
+import { useAppState } from "@/providers/AppStateProvider";
+import { twMerge } from "tailwind-merge";
+import Container from "./Container";
+
+function Header() {
+	const { isCompliant } = useAppState();
+
+	return (
+		<header
+			className={twMerge(
+				"mb-auto",
+				"text-sm",
+				isCompliant && ["bg-gradient-to-b", "from-blueZodiac", "to-background"],
+				"lg:min-h-screen",
+				"flex",
+				"flex-col",
+			)}
+		>
+			<Container className="grow flex flex-col">
+				<Navigation />
+
+				<div className="mt-12 grow flex items-center">
+					<h1 className="uppercase text-4xl lg:text-7xl/normal">
+						The only <strong>disability</strong> is when people cannot see{" "}
+						<strong>human potential</strong>.
+					</h1>
+				</div>
+			</Container>
+		</header>
+	);
+}
+
+export default Header;

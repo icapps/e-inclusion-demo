@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  body {
+    @apply min-h-screen bg-background text-white;
+  }
+
+  body.compliant {
+    @apply font-poppins;
+  }
+
+  body.compliant p {
+    @apply max-w-[60ch];
+  }
+}
