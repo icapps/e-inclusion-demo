@@ -4,6 +4,7 @@ import { defineConfig } from "vite";
 
 // https://vitejs.dev/config/
 export default defineConfig({
+	base: "/e-inclusion-demo/",
 	plugins: [react()],
 	resolve: {
 		alias: {

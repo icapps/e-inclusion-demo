@@ -24,7 +24,7 @@ function Navigation() {
 					{isCompliant ? (
 						<>
 							<span className="sr-only">Icapps</span>
-							<IcappsLogo title="Icapps logo" aria-hidden />
+							<IcappsLogo aria-hidden />
 						</>
 					) : (
 						<IcappsLogo title="" />

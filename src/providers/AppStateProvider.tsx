@@ -1,10 +1,5 @@
 import { useLocalStorage } from "@/hooks";
-import {
-	type PropsWithChildren,
-	createContext,
-	useContext,
-	useState,
-} from "react";
+import { type PropsWithChildren, createContext, useContext } from "react";
 
 export type AppStateContext = {
 	isCompliant: boolean;
