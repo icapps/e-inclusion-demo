@@ -19,7 +19,15 @@ function Layout({ children }: Layout) {
 	useEffect(() => {
 		document.title = isCompliant ? "E-inclusion demo" : "";
 		document.documentElement.lang = isCompliant ? "en" : "";
-	});
+
+		const viewportElement = document.querySelector("meta[name=viewport]");
+		viewportElement?.setAttribute(
+			"content",
+			isCompliant
+				? "width=device-width, initial-scale=1.0"
+				: "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0",
+		);
+	}, [isCompliant]);
 
 	return (
 		<div className={twMerge(["flex", "flex-col", "size-full"])}>

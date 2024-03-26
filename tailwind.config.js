@@ -7,12 +7,14 @@ export default {
 			transparent: "transparent",
 			white: "#ffffff",
 			black: "#000000",
+			gray: "#cccccc",
 			blueZodiac: "#0a1930",
 			green: "#00ff00",
 			brightTurquoise: "#00e5ff",
-			red: "#ff0000",
+			red: "#EF5350",
 
 			// specific
+			outlineColor: "#93C700",
 			background: "#007da3",
 		},
 

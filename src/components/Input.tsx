@@ -16,12 +16,14 @@ function Input({ label, className, multiline, error, ...props }: InputProps) {
 
 	return (
 		<div className="mb-4">
-			<label htmlFor={id} className="block mb-1 uppercase font-light text-sm">
+			<label htmlFor={id} className="block mb-1 font-light text-sm">
 				{label}
 			</label>
+
 			<Element
 				id={id}
 				className={twMerge([
+					"block",
 					"w-full",
 					"max-w-[80ch]",
 					"p-3",
@@ -31,12 +33,18 @@ function Input({ label, className, multiline, error, ...props }: InputProps) {
 					error ? "border-red" : "border-black",
 					className,
 				])}
+				{...(error
+					? { "aria-invalid": true, "aria-describedby": `${id}-error` }
+					: {})}
 				{...(multiline ? { rows: 5 } : {})} // Only add rows attribute if multiline
 				{...props}
 			/>
 
 			{error && (
-				<span className="text-red text-sm mt-1 flex items-center">
+				<span
+					id={`${id}-error`}
+					className="bg-red p-2  rounded-md text-sm inline-flex mt-2 items-center"
+				>
 					<Exclamation title="Error: " className="mr-2" />
 					{error}
 				</span>

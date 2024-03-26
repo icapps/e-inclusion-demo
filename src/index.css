@@ -14,4 +14,12 @@
   body.compliant p {
     @apply max-w-[60ch];
   }
+
+  body.compliant button,
+  body.compliant a,
+  body.compliant input,
+  body.compliant select,
+  body.compliant textarea {
+    @apply focus:outline-none focus:ring focus:ring-outlineColor;
+  }
 }

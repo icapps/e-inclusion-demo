@@ -1,4 +1,5 @@
 import { useAppState } from "@/providers/AppStateProvider";
+import { twMerge } from "tailwind-merge";
 import Container from "../../components/Container";
 import Typography from "../../components/Typography";
 
@@ -38,7 +39,14 @@ function MissionStatement({
 					/>
 				</div>
 				<div className="hidden lg:flex items-center lg:w-2/5 bg-white/90 text-background p-8 rounded-lg shadow-lg">
-					<blockquote className="text-xl/normal font-bold text-center">
+					<blockquote
+						className={twMerge(
+							"text-xl/normal",
+							"font-bold",
+							"text-center",
+							isCompliant && "text-blueZodiac",
+						)}
+					>
 						{quote}
 					</blockquote>
 				</div>
