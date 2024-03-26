@@ -22,6 +22,12 @@ function Header() {
 
 				<div className="mt-12 grow flex items-center">
 					<h1 className="uppercase text-4xl lg:text-7xl/normal">
+						{isCompliant && (
+							<span className="block uppercase text-xl font-bold">
+								E-inclusion demo
+								<span className="sr-only">: </span>
+							</span>
+						)}
 						The only <strong>disability</strong> is when people cannot see{" "}
 						<strong>human potential</strong>.
 					</h1>

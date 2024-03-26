@@ -1,3 +1,4 @@
+import { useAppState } from "@/providers";
 import type { HTMLAttributes, PropsWithChildren } from "react";
 import { twMerge } from "tailwind-merge";
 
@@ -7,8 +8,11 @@ export type ContainerProps = PropsWithChildren &
 	};
 
 function Container({ className, narrow, ...props }: ContainerProps) {
+	const { isCompliant } = useAppState();
+	const Element = isCompliant ? "section" : "div";
+
 	return (
-		<div
+		<Element
 			className={twMerge(
 				"container",
 				"mx-auto",

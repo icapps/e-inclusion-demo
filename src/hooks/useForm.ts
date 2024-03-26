@@ -10,7 +10,7 @@ const formErrors: Record<keyof ValidityState, string> = {
 	tooLong: "Please shorten this text.",
 	tooShort: "Please lengthen this text.",
 	typeMismatch: "Please match the requested format.",
-	valueMissing: "Please fill out this field.",
+	valueMissing: "Please fill in this field.",
 	valid: "",
 };
 
@@ -34,6 +34,11 @@ function useForm(formRef: RefObject<HTMLFormElement>) {
 		if (!isValid) {
 			if (!formRef.current?.checkValidity()) {
 				e.preventDefault();
+				(
+					formRef.current?.querySelector("input:invalid, textarea:invalid") as
+						| HTMLInputElement
+						| HTMLTextAreaElement
+				)?.focus();
 				return false;
 			}
 		}

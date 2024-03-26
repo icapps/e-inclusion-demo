@@ -1,5 +1,5 @@
 import { useAppState } from "@/providers/AppStateProvider";
-import type { HTMLAttributes } from "react";
+import { type HTMLAttributes, useId } from "react";
 import { twMerge } from "tailwind-merge";
 
 type SwitchProps = Omit<HTMLAttributes<HTMLInputElement>, "onChange"> & {
@@ -9,6 +9,7 @@ type SwitchProps = Omit<HTMLAttributes<HTMLInputElement>, "onChange"> & {
 };
 
 function Switch({ label, value, onChange, className, ...props }: SwitchProps) {
+	const id = useId();
 	const { isCompliant } = useAppState();
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -25,12 +26,14 @@ function Switch({ label, value, onChange, className, ...props }: SwitchProps) {
 			)}
 		>
 			<input
+				id={id}
 				type="checkbox"
 				checked={value}
 				className="sr-only peer"
 				onChange={handleChange}
 				{...props}
 			/>
+
 			<div
 				className={twMerge(
 					"relative",
@@ -54,10 +57,21 @@ function Switch({ label, value, onChange, className, ...props }: SwitchProps) {
 					"after:w-5",
 					"after:transition-all",
 					"peer-checked:bg-green",
-					isCompliant && ["focus:ring-1", "focus:ring-white"],
+					isCompliant && [
+						"peer-focus:ring-2",
+						"peer-focus:ring-brightTurquoise",
+						"peer-focus:ring-offset-4",
+						"peer-focus:ring-offset-blueZodiac",
+					],
 				)}
 			/>
-			<span className="ms-3 text-sm font-medium">{label}</span>
+			{isCompliant ? (
+				<label className="ms-3 text-sm font-medium" htmlFor={id}>
+					{label}
+				</label>
+			) : (
+				<span className="ms-3 text-sm font-medium">{label}</span>
+			)}
 		</label>
 	);
 }

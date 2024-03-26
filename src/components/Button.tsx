@@ -4,7 +4,7 @@ import { twMerge } from "tailwind-merge";
 export type ButtonProps = PropsWithChildren &
 	ButtonHTMLAttributes<HTMLButtonElement>;
 
-function Button({ type = "button", ...props }: ButtonProps) {
+function Button({ type = "button", className, ...props }: ButtonProps) {
 	return (
 		<button
 			className={twMerge(
@@ -16,6 +16,7 @@ function Button({ type = "button", ...props }: ButtonProps) {
 				"py-2",
 				"px-4",
 				"rounded",
+				className,
 			)}
 			type={type}
 			{...props}
