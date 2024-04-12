@@ -41,7 +41,7 @@ function Navigation() {
 									"aria-expanded": isNavOpen,
 									"aria-haspopup": "true",
 									"aria-controls": "menu",
-							  }
+								}
 							: {})}
 					>
 						{isCompliant && <span className="sr-only">Toggle navigation</span>}
