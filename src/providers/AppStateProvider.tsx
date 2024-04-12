@@ -1,6 +1,10 @@
 import { useLocalStorage } from "@/hooks";
 import { type PropsWithChildren, createContext, useContext } from "react";
 
+export type AppStateContextProps = PropsWithChildren & {
+	defaultValue?: AppStateContext;
+};
+
 export type AppStateContext = {
 	isCompliant: boolean;
 	toggleCompliancy: (newValue?: boolean) => void;
@@ -15,10 +19,10 @@ const AppStateContext = createContext<AppStateContext>(initialState);
 
 export const useAppState = () => useContext(AppStateContext);
 
-function AppStateProvider({ children }: PropsWithChildren) {
+function AppStateProvider({ children, defaultValue }: AppStateContextProps) {
 	const [isCompliant, setIsCompliant] = useLocalStorage(
 		"isCompliant",
-		initialState.isCompliant,
+		defaultValue?.isCompliant || initialState.isCompliant,
 	);
 
 	const toggleCompliancy = (newValue?: boolean) => {

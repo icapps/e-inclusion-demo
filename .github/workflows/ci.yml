@@ -1,4 +1,4 @@
-name: Code quality
+name: Continuous Integration
 
 on:
   push:
@@ -10,9 +10,34 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
       - name: Setup Biome
         uses: biomejs/setup-biome@v2
         with:
           version: latest
+
       - name: Run Biome
         run: biome ci .
+
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 8
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: 🧪 Run tests
+        run: pnpm run test
