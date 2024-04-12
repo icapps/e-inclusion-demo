@@ -28,7 +28,6 @@ function NewsTeaser({ image, title, summary, href, altText }: NewsTeaserProps) {
 				</a>
 			</div>
 
-			{/* biome-ignore lint/a11y/useAnchorContent: <explanation> */}
 			{/* <a
 				href={href}
 				aria-hidden

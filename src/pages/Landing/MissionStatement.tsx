@@ -35,7 +35,7 @@ function MissionStatement({
 					<img
 						src={src}
 						alt={isCompliant ? altText : undefined}
-						className=" rounded-lg shadow-lg aspect-video object-cover object-center"
+						className="rounded-lg shadow-lg aspect-video object-cover object-center"
 					/>
 				</div>
 				<div className="hidden lg:flex items-center lg:w-2/5 bg-white/90 text-background p-8 rounded-lg shadow-lg">
