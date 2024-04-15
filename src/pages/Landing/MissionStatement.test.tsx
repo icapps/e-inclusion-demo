@@ -1,5 +1,5 @@
 import { axe } from "jest-axe";
-import { render, screen } from "../../../test/test-utils";
+import { render, screen } from "test-utils";
 import MissionStatement from "./MissionStatement";
 
 describe("MissionStatement", () => {
@@ -13,6 +13,13 @@ describe("MissionStatement", () => {
 		/>
 	);
 
+	it("should have no accessibility violations", async () => {
+		const { container } = render(testElement);
+
+		const results = await axe(container);
+		expect(results).toHaveNoViolations();
+	});
+
 	it("should render content", async () => {
 		render(testElement);
 
@@ -21,12 +28,5 @@ describe("MissionStatement", () => {
 		expect(screen.getByRole("heading")).toHaveTextContent("title");
 		expect(screen.getByRole("paragraph")).toHaveTextContent("body");
 		expect(screen.getByRole("blockquote")).toHaveTextContent("quote");
-	});
-
-	it("should have no accessibility violations", async () => {
-		const { container } = render(testElement);
-
-		const results = await axe(container);
-		expect(results).toHaveNoViolations();
 	});
 });
