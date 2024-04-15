@@ -20,8 +20,8 @@ function Header() {
 			<Container className="grow flex flex-col">
 				<Navigation />
 
-				<div className="mt-12 grow flex items-center">
-					<h1 className="uppercase text-4xl lg:text-7xl/normal">
+				<div className="pt-12 my-auto">
+					<div className="uppercase text-4xl lg:text-7xl/normal">
 						{isCompliant && (
 							<span className="block uppercase text-xl font-bold">
 								E-inclusion demo
@@ -30,7 +30,7 @@ function Header() {
 						)}
 						The only <strong>disability</strong> is when people cannot see{" "}
 						<strong>human potential</strong>.
-					</h1>
+					</div>
 				</div>
 			</Container>
 		</header>

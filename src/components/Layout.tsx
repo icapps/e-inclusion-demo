@@ -3,9 +3,9 @@ import { useAppState } from "@/providers/AppStateProvider";
 import { type PropsWithChildren, useEffect } from "react";
 import { twMerge } from "tailwind-merge";
 
-type Layout = PropsWithChildren;
+type Layout = PropsWithChildren & { pageTitle: string };
 
-function Layout({ children }: Layout) {
+function Layout({ pageTitle, children }: Layout) {
 	const { isCompliant } = useAppState();
 
 	useEffect(() => {
@@ -36,7 +36,14 @@ function Layout({ children }: Layout) {
 			)}
 			<Header />
 
-			{isCompliant ? <main id="main-content">{children}</main> : children}
+			{isCompliant ? (
+				<main id="main-content">
+					<h1 className="sr-only">{pageTitle}</h1>
+					{children}
+				</main>
+			) : (
+				children
+			)}
 			<Footer />
 		</div>
 	);

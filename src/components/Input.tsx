@@ -22,6 +22,7 @@ function Input({ label, className, multiline, error, ...props }: InputProps) {
 
 			<Element
 				id={id}
+				aria-errormessage={error ? `${id}-error` : undefined}
 				className={twMerge([
 					"block",
 					"w-full",
@@ -42,6 +43,7 @@ function Input({ label, className, multiline, error, ...props }: InputProps) {
 
 			{error && (
 				<span
+					role="alert"
 					id={`${id}-error`}
 					className="bg-red p-2  rounded-md text-sm inline-flex mt-2 items-center"
 				>

@@ -6,7 +6,7 @@ import News from "./News";
 
 function Landing() {
 	return (
-		<Layout>
+		<Layout pageTitle="E-inclusion Demo">
 			<MissionStatement
 				title="About us and our mission"
 				body="We are a team of passionate developers, designers, and project managers who love to create digital products. We want to use technology seamlessly to enrich your daily life. We are here to help you with your digital challenges and to make your ideas come to life."
