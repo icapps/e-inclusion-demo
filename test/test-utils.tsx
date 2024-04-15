@@ -1,4 +1,5 @@
 import { type RenderOptions, render } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import type { PropsWithChildren, ReactElement } from "react";
 import { AppStateProvider } from "../src/providers";
 
@@ -16,7 +17,12 @@ const AllTheProviders = ({ children }: PropsWithChildren) => {
 const customRender = (
 	ui: ReactElement,
 	options?: Omit<RenderOptions, "wrapper">,
-) => render(ui, { wrapper: AllTheProviders, ...options });
+) => {
+	return {
+		user: userEvent.setup(),
+		...render(ui, { wrapper: AllTheProviders, ...options }),
+	};
+};
 
 // re-export everything
 export * from "@testing-library/react";

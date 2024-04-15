@@ -28,14 +28,15 @@ function NewsTeaser({ image, title, summary, href, altText }: NewsTeaserProps) {
 				</a>
 			</div>
 
-			{/* <a
+			{/* biome-ignore lint/a11y/useAnchorContent: <explanation> */}
+			<a
 				href={href}
 				aria-hidden
 				tabIndex={-1}
 				target="_blank"
 				rel="noreferrer"
 				className="absolute inset-0"
-			/> */}
+			/>
 
 			<img
 				src={image}

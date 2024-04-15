@@ -1,8 +1,11 @@
-import { useAppState } from "@/providers/AppStateProvider";
+import { useAppState } from "@/providers";
 import { type HTMLAttributes, useId } from "react";
 import { twMerge } from "tailwind-merge";
 
-type SwitchProps = Omit<HTMLAttributes<HTMLInputElement>, "onChange"> & {
+type SwitchProps = Omit<
+	HTMLAttributes<HTMLButtonElement>,
+	"onClick" | "onChange"
+> & {
 	label: string;
 	value?: boolean;
 	onChange?: (value: boolean) => void;
@@ -12,40 +15,27 @@ function Switch({ label, value, onChange, className, ...props }: SwitchProps) {
 	const id = useId();
 	const { isCompliant } = useAppState();
 
-	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		onChange?.(e.target.checked);
+	const handleChange = () => {
+		onChange?.(!value);
 	};
 
 	return (
-		<label
-			className={twMerge(
-				"inline-flex",
-				"items-center",
-				"cursor-pointer",
-				className,
-			)}
-		>
-			<input
+		<div className="inline-flex items-center">
+			<button
+				type="button"
+				role="switch"
+				aria-checked={value ? "true" : "false"}
+				onClick={handleChange}
 				id={id}
-				type="checkbox"
-				checked={value}
-				className="sr-only peer"
-				onChange={handleChange}
-				{...props}
-			/>
-
-			<div
-				aria-labelledby={`${id}-label`}
-				className={twMerge(
+				className={twMerge([
+					// Common styles
 					"relative",
 					"w-11",
 					"h-6",
 					"bg-white/40",
-					"peer-focus:outline-none",
 					"rounded-full",
-					"peer",
-					"peer-checked:after:translate-x-full",
-					"peer-checked:after:border-white",
+
+					// Checked indicator
 					"after:content-['']",
 					"after:absolute",
 					"after:top-[2px]",
@@ -56,30 +46,28 @@ function Switch({ label, value, onChange, className, ...props }: SwitchProps) {
 					"after:rounded-full",
 					"after:h-5",
 					"after:w-5",
-					"after:transition-all",
-					"peer-checked:bg-green",
+
+					// Checked state
+					value && ["after:translate-x-full", "after:border-white", "bg-green"],
+
+					// Focus
+					"focus:outline-none",
 					isCompliant && [
-						"peer-focus:ring-2",
-						"peer-focus:ring-outlineColor",
-						"peer-focus:ring-offset-4",
-						"peer-focus:ring-offset-blueZodiac",
+						"focus:ring-2",
+						"focus:ring-outlineColor",
+						"focus:ring-offset-4",
+						"focus:ring-offset-blueZodiac",
 					],
-				)}
-			/>
-			{isCompliant ? (
-				<label
-					className="ms-3 text-sm font-medium"
-					htmlFor={id}
-					id={`${id}-label`}
-				>
-					{label}
-				</label>
-			) : (
-				<span id={`${id}-label`} className="ms-3 text-sm font-medium">
-					{label}
-				</span>
-			)}
-		</label>
+				])}
+				{...props}
+			>
+				<span className="sr-only">off</span>
+				<span className="sr-only">on</span>
+			</button>
+			<label htmlFor={id} className="ms-3 text-sm font-medium cursor-pointer">
+				{label}
+			</label>
+		</div>
 	);
 }
 
