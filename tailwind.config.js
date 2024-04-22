@@ -21,6 +21,7 @@ export default {
 		fontFamily: {
 			default: ["ui-sans-serif", "system-ui"],
 			poppins: ["Poppins", "ui-sans-serif", "system-ui"],
+			noto: ["Noto Sans", "ui-sans-serif", "system-ui"],
 		},
 	},
 	plugins: [],

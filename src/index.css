@@ -4,11 +4,11 @@
 
 @layer base {
   body {
-    @apply min-h-screen bg-background text-white;
+    @apply min-h-screen bg-background text-white font-poppins;
   }
 
   body.compliant {
-    @apply font-poppins;
+    @apply font-noto;
   }
 
   body.compliant p {
