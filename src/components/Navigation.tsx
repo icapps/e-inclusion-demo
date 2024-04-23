@@ -17,18 +17,14 @@ function Navigation() {
 	return (
 		<div className="w-full sm:flex sm:items-center sm:justify-between my-4 sm:my-6 lg:my-8">
 			<div className="flex items-center justify-between">
-				<a
-					className="flex-none text-xl font-semibold"
-					title={isCompliant ? "Icapps" : ""}
-					href="#!"
-				>
+				<a className="flex-none text-xl font-semibold" href="#!">
 					{isCompliant ? (
 						<>
 							<span className="sr-only">Icapps</span>
 							<IcappsLogo aria-hidden />
 						</>
 					) : (
-						<IcappsLogo title="" />
+						<IcappsLogo title="Icapps" />
 					)}
 				</a>
 				<div className="sm:hidden">

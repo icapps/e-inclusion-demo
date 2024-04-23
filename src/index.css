@@ -8,11 +8,21 @@
   }
 
   body.compliant {
-    @apply font-noto;
+    @apply font-noto bg-backgroundCompliant;
   }
 
   body.compliant p {
     @apply max-w-[60ch];
+  }
+
+  body:not(.compliant) p,
+  body:not(.compliant) h1,
+  body:not(.compliant) h2,
+  body:not(.compliant) h3,
+  body:not(.compliant) h4,
+  body:not(.compliant) h5,
+  body:not(.compliant) h6 {
+    @apply leading-none;
   }
 
   body.compliant button,

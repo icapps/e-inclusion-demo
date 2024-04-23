@@ -25,6 +25,7 @@ function Switch({ label, value, onChange, className, ...props }: SwitchProps) {
 				type="button"
 				role="switch"
 				aria-checked={value ? "true" : "false"}
+				aria-labelledby={`${id}-label`}
 				onClick={handleChange}
 				id={id}
 				className={twMerge([
@@ -34,6 +35,7 @@ function Switch({ label, value, onChange, className, ...props }: SwitchProps) {
 					"h-6",
 					"bg-white/40",
 					"rounded-full",
+					"text-black",
 
 					// Checked indicator
 					"after:content-['']",
@@ -41,7 +43,7 @@ function Switch({ label, value, onChange, className, ...props }: SwitchProps) {
 					"after:top-[2px]",
 					"after:start-[2px]",
 					"after:bg-white",
-					"after:border-gray-300",
+					"after:border-white",
 					"after:border",
 					"after:rounded-full",
 					"after:h-5",
@@ -64,9 +66,12 @@ function Switch({ label, value, onChange, className, ...props }: SwitchProps) {
 				<span className="sr-only">off</span>
 				<span className="sr-only">on</span>
 			</button>
-			<label htmlFor={id} className="ms-3 text-sm font-medium cursor-pointer">
+			<span
+				id={`${id}-label`}
+				className="ms-3 text-sm font-medium cursor-pointer"
+			>
 				{label}
-			</label>
+			</span>
 		</div>
 	);
 }

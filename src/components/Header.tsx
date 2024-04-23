@@ -11,7 +11,11 @@ function Header() {
 			className={twMerge(
 				"mb-auto",
 				"text-sm",
-				isCompliant && ["bg-gradient-to-b", "from-blueZodiac", "to-background"],
+				isCompliant && [
+					"bg-gradient-to-b",
+					"from-blueZodiac",
+					"to-backgroundCompliant",
+				],
 				"lg:min-h-screen",
 				"flex",
 				"flex-col",
@@ -19,7 +23,6 @@ function Header() {
 		>
 			<Container className="grow flex flex-col">
 				<Navigation />
-
 				<div className="pt-12 my-auto">
 					<div className="uppercase text-4xl lg:text-7xl/normal">
 						{isCompliant && (
